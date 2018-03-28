@@ -1,40 +1,47 @@
 <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-    
+
 <body style='margin : 0px; overflow: hidden;'>
 
-<style type="text/css">
-    #arjsDebugUIContainer{ display:none; }
-    .a-enter-vr-button{ display:none; }
+  <style type="text/css">
+  #arjsDebugUIContainer{ display:none; }
+  .a-enter-vr-button{ display:none; }
 </style>   
 
 <div style='position: fixed; top: -10px; width:100%; text-align:left; padding: 10px;  z-index: 1; font-family: Arial, Helvetica, sans-serif; font-weight:800; font-size: 20px;'><p> Cheese Board<br>120AED</p></div>
 
-<button type="button"  style='background-color:#4CAF50;  border: none; padding: 10px;  z-index: 1; font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: white; padding: 15px 32px; position: absolute; right: 10px; top: 10px; '  onclick="">✓ Заказать</button>
+<button type="button" id="order-button"  style='background-color:#528fcc; border-radius: 22px;  border: none; padding: 10px;  z-index: 1; font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: white; padding: 15px 32px; position: absolute; right: 10px; top: 10px; '  onclick="myFunction()">Заказать </button>
 
-<button type="button"  style='background-color:white;  border: none; padding: 10px;  z-index: 1; font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: grey; padding: 15px 32px; position: absolute; right: 10px; bottom: 10px; '  onclick="location.href='https://erjan-A.github.io/menu/golden'">NEXT →</button>
- 
-<button type="button"  style='background-color:white;  border: none; padding: 10px;  z-index: 1; font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: grey; padding: 15px 32px; position: absolute; left: 10px; bottom: 10px; '  onclick="location.href='https://erjan-A.github.io/menu/golden'">← PREV</button>
+<button type="button"  style='background-color:white;  border: none; padding: 10px;  z-index: 1; font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: grey; padding: 15px 32px; position: absolute; right: 10px; bottom: 10px; '  onclick="location.href='https://erjan-A.github.io/golden'">👉</button>
+
+<button type="button"  style='background-color:white;  border: none; padding: 10px;  z-index: 1; font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: grey; padding: 15px 32px; position: absolute; left: 10px; bottom: 10px; '  onclick="location.href='https://erjan-A.github.io/golden'">👈</button>
 
 <script>
-      AFRAME.registerComponent('alpha-test', {
-          dependencies: ['material'],
-          init: function () {
-          this.el.getObject3D('mesh').material.alphaTest = 0.2;
-          }
-      });
+  AFRAME.registerComponent('alpha-test', {
+    dependencies: ['material'],
+    init: function () {
+      this.el.getObject3D('mesh').material.alphaTest = 0.2;
+    }
+  });
+</script>
+
+<script>
+  function myFunction() {
+    document.getElementById("order-button").value = "👍 Заказ принят";
+    document.getElementById("order-button").style.background-color = "green";
+  }
 </script>
 
 <a-scene embedded arjs='trackingMethod: best;'>
- 
-		<a-anchor >
-        
-         <a-entity position="0 -0.7 0" scale="0.14 0.14 0.14" gltf-model="https://raw.githubusercontent.com/coob113/menu/master/cheese_board/scene.gltf"></a-entity>
-           
-        <a-box position='0 0 0' scale="0.5 0.01 0.5" material='opacity: 0.1;' rotation='0 0 0'></a-box>
-		</a-anchor>
 
-		<a-camera-static/>
-	</a-scene>
+  <a-anchor >
+
+   <a-entity position="0 -0.7 0" scale="0.14 0.14 0.14" gltf-model="https://raw.githubusercontent.com/erjan-A/master/cheese_board/scene.gltf"></a-entity>
+
+   <a-box position='0 0 0' scale="0.5 0.01 0.5" material='opacity: 0.1;' rotation='0 0 0'></a-box>
+ </a-anchor>
+
+ <a-camera-static/>
+</a-scene>
 </body>
